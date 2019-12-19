@@ -1,8 +1,14 @@
 package com.atguigu.gmall.user.bean;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class UmsMember {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String memberLevelId;
     private String username;
@@ -174,7 +180,5 @@ public class UmsMember {
     public void setHistoryIntegration(int historyIntegration) {
         this.historyIntegration = historyIntegration;
     }
-
-    
 
 }
