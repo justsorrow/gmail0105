@@ -31,10 +31,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId) {
 
-        UmsMemberReceiveAddress umsMemberReceiveAddress = new UmsMemberReceiveAddress();
-        umsMemberReceiveAddress.setMemberId(memberId);
+//        //封装的参数对象
+//        UmsMemberReceiveAddress umsMemberReceiveAddress = new UmsMemberReceiveAddress();
+//        umsMemberReceiveAddress.setMemberId(memberId);
+//
+//        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.select(umsMemberReceiveAddress);
 
-        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.selectByExample(umsMemberReceiveAddress);
+        Example example = new Example(UmsMemberReceiveAddress.class);
+        example.createCriteria().andEqualTo("memberId", memberId);
+        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.selectByExample(example);
 
         return umsMemberReceiveAddresses;
     }

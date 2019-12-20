@@ -18,11 +18,12 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("getReceiveAddressByMemberId")
-    public Object getReceiveAddressByMemberId(@RequestBody String memberId) {
+    @ResponseBody
+    public Object getReceiveAddressByMemberId(String memberId) {
 
-        List<UmsMemberReceiveAddress> umsMemberReceiveAddress = userService.getReceiveAddressByMemberId(memberId);
+        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = userService.getReceiveAddressByMemberId(memberId);
 
-        return umsMemberReceiveAddress;
+        return umsMemberReceiveAddresses;
     }
 
     @RequestMapping("getAllUser")
